@@ -1,0 +1,16 @@
+{
+  "name": "pipact-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/backend",
+    "packages/frontend",
+    "packages/shared"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm run build -w @pipact/shared && npm run build -w @pipact/backend"
+  }
+}
