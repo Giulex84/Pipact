@@ -1,7 +1,8 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./packages/shared" },
-    { "path": "./packages/backend" }
-  ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@pipact/shared": ["packages/shared/src"]
+    }
+  }
 }
