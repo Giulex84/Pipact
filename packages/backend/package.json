@@ -5,6 +5,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "ts-node src/index.ts",
+    "prebuild": "npm run build -w @pipact/shared --if-present",
     "build": "tsc -p ."
   },
   "dependencies": {

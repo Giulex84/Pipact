@@ -5,7 +5,12 @@
     "rootDir": "src",
     "module": "CommonJS",
     "target": "ES2020",
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pipact/shared": ["../shared/dist"]
+    }
   },
   "include": ["src"]
 }

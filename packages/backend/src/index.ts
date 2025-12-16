@@ -1,18 +1,7 @@
-import express from "express";
-import type { Agreement } from "@pipact/shared";
+import { app } from "./app";
 
-const app = express();
-app.use(express.json());
+const port = process.env.PORT ? Number(process.env.PORT) : 3001;
 
-app.get("/health", (_req, res) => {
-  const example: Agreement = {
-    id: "example",
-    clientId: "client",
-    workerId: "worker",
-    amountPi: 1,
-    status: "CREATED"
-  };
-  res.json({ ok: true, example });
+app.listen(port, () => {
+  console.log(`Backend listening on port ${port}`);
 });
-
-app.listen(3001);
