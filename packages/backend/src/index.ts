@@ -1,5 +1,5 @@
 import express from "express";
-import { Agreement } from "@pipact/shared";
+import type { Agreement } from "@pipact/shared";
 
 const app = express();
 app.use(express.json());
