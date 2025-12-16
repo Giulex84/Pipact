@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@pipact/shared": ["packages/shared/src"]
+    }
+  }
+}
