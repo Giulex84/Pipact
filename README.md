@@ -9,8 +9,8 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 - Avoid ratings, scores, or promises of income. Badges come only from objective agreement outcomes.
 
 ## Repository layout
-- `packages/shared`: TypeScript models shared by backend and frontend.
-- `packages/backend`: Express starter API for categories, profiles, and agreement lifecycle handling.
+- `api`: Vercel serverless functions (e.g., `/api/health`, `/api/agreements/example`) used for deployments on Node.js 20.x.
+- `packages/shared`: TypeScript models shared by the API and frontend.
 - `packages/frontend`: React + Vite starter UI that highlights categories, service profiles, lifecycle steps, and manual Pi confirmation notes.
 - `TermsOfService.md` and `PrivacyPolicy.md`: clear, conservative policies.
 
@@ -24,7 +24,7 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 ## Getting started
 
 ### Prerequisites
-- Node.js 18+
+- Node.js 20+
 - npm 9+ (workspaces enabled)
 
 ### Install dependencies
@@ -32,15 +32,14 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 npm install
 ```
 
-### Backend
+### Serverless API
+- `GET /api/health` returns a readiness payload and timestamp.
+- `GET /api/agreements/example` returns a sample agreement using the shared models.
+
+You can run the functions locally with the [Vercel CLI](https://vercel.com/docs/cli):
 ```bash
-npm run --workspace @pipact/backend dev
+npx vercel dev
 ```
-Visits:
-- `GET /health` for readiness
-- `GET /categories` for allowed service areas
-- `POST /profiles` to draft a service profile (stores in memory)
-- `POST /agreements` then `POST /agreements/:id/status` to record lifecycle steps
 
 ### Frontend
 ```bash
