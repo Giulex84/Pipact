@@ -1,2 +1,2 @@
-export { app } from "./app";
-export { default, default as handler } from "./serverless";
+export { default as health } from "./api/health";
+export { default as agreementsExample } from "./api/agreements-example";
