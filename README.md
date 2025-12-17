@@ -9,8 +9,8 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 - Avoid ratings, scores, or promises of income. Badges come only from objective agreement outcomes.
 
 ## Repository layout
+- `api`: Vercel serverless functions that expose PiPact JSON endpoints.
 - `packages/shared`: TypeScript models shared by backend and frontend.
-- `packages/backend`: Express starter API for categories, profiles, and agreement lifecycle handling.
 - `packages/frontend`: React + Vite starter UI that highlights categories, service profiles, lifecycle steps, and manual Pi confirmation notes.
 - `TermsOfService.md` and `PrivacyPolicy.md`: clear, conservative policies.
 
@@ -32,15 +32,9 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 npm install
 ```
 
-### Backend
-```bash
-npm run --workspace @pipact/backend dev
-```
-Visits:
-- `GET /health` for readiness
-- `GET /categories` for allowed service areas
-- `POST /profiles` to draft a service profile (stores in memory)
-- `POST /agreements` then `POST /agreements/:id/status` to record lifecycle steps
+### API routes (Vercel serverless)
+- `GET /api/health` returns a JSON readiness payload.
+- `GET /api/agreements/example` returns a sample agreement using shared models.
 
 ### Frontend
 ```bash
