@@ -2,7 +2,7 @@
   "private": true,
   "workspaces": ["packages/*"],
   "scripts": {
-    "build": "npm run build -w @pipact/shared --if-present && npm run build -w @pipact/frontend --if-present"
+    "build": "npm run build -w @pipact/shared --if-present"
   },
   "devDependencies": {
     "@vercel/node": "^3.2.1"
