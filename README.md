@@ -62,3 +62,5 @@ The shared package exports TypeScript interfaces for profiles, agreements, payme
 
 ## License
 This project is provided under the MIT license. See `LICENSE` if added later.
+
+<!-- Deployment trigger placeholder -->
