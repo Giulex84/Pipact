@@ -10,7 +10,7 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 
 ## Repository layout
 - `packages/shared`: TypeScript models shared by backend and frontend.
-- `packages/backend`: Express starter API for categories, profiles, and agreement lifecycle handling.
+- `packages/backend`: Serverless-safe helpers and in-memory state management for the API routes.
 - `packages/frontend`: React + Vite starter UI that highlights categories, service profiles, lifecycle steps, and manual Pi confirmation notes.
 - `TermsOfService.md` and `PrivacyPolicy.md`: clear, conservative policies.
 
@@ -32,15 +32,24 @@ PiPact is a Pi Network–compliant application that lets people publish service 
 npm install
 ```
 
-### Backend
+### Backend (Vercel serverless)
+Backend routes live under `/api` and are Vercel-native, with zero Express or custom servers. They use in-memory state only.
+
+Key endpoints:
+- `GET /api/users/me` - demo user profile (no auth yet)
+- `GET /api/services` / `POST /api/services` - list and draft service profiles
+- `POST /api/agreements` - create a new agreement (CREATED state)
+- `GET /api/agreements/:id` - fetch agreement details and history
+- `POST /api/agreements/:id/accept` - move to ACCEPTED (explicit transition)
+- `POST /api/agreements/:id/mark-delivered` - move to DELIVERED (explicit transition)
+- `GET /api/badges/:userId` - deterministic badges derived from agreement events
+
+To type-check the backend helpers:
 ```bash
-npm run --workspace @pipact/backend dev
+npm run --workspace @pipact/backend build
 ```
-Visits:
-- `GET /health` for readiness
-- `GET /categories` for allowed service areas
-- `POST /profiles` to draft a service profile (stores in memory)
-- `POST /agreements` then `POST /agreements/:id/status` to record lifecycle steps
+
+To exercise the serverless routes locally, use `vercel dev` (if you have Vercel CLI installed) or call the handlers with any Node HTTP client.
 
 ### Frontend
 ```bash
@@ -62,5 +71,4 @@ The shared package exports TypeScript interfaces for profiles, agreements, payme
 
 ## License
 This project is provided under the MIT license. See `LICENSE` if added later.
-
 
