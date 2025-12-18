@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@pipact/shared": ["../shared/dist"]
+      "@pipact/shared": ["../shared/src"]
     }
   },
   "include": ["src"]
